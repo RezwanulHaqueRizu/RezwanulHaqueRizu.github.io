@@ -9,9 +9,8 @@ redirect_from:
 
 ---
 
-<meta http-equiv="refresh" content="0; url=/files/Rezwanul_Haque_CV.pdf" />
+<meta http-equiv="refresh" content="0; url={{ '/files/Rezwanul_Haque_CV.pdf' | relative_url }}" />
 <script>
-  window.location.href = '/files/Rezwanul_Haque_CV.pdf';
-// fallback link remains visible if scripts/meta refresh fail
+  window.location.href = '{{ '/files/Rezwanul_Haque_CV.pdf' | relative_url }}';
 </script>
-<p>If you are not redirected, <a href="/files/Rezwanul_Haque_CV.pdf">click here</a>.</p>
+<p>If you are not redirected, <a href="{{ '/files/Rezwanul_Haque_CV.pdf' | relative_url }}">click here</a>.</p>
