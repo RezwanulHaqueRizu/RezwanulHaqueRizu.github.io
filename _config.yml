@@ -13,9 +13,9 @@ title                    : "Rezwanul Haque"
 title_separator          : "-"
 name                     : &name "Rezwanul Haque"
 description              : &description "PhD Candidate in Computer Science. Research in Computer Security, Computer Vision, and NLP."   # Update this with a general description of your site, this is the default if not overridden by a page
-url                      : https://rezwanulhaque.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
+url                      : https://Rizu-17.github.io # User/Org site or project site root
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
-baseurl                  : "" # the subpath of your site, e.g. "/blog"
+baseurl                  : "/rezwanulhaque.github.io" # project site path under the user domain
 repository               : "Rizu-17/rezwanulhaque.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
