@@ -10,24 +10,25 @@
 main:
   - title: "Publications"
     url: /publications/
-
-  - title: "Talks"
-    url: /talks/    
-
+  
   - title: "Teaching"
     url: /teaching/    
     
-  - title: "Portfolio"
-    url: /portfolio/
-        
-  - title: "Blog Posts"
-    url: /year-archive/
-    
+  - title: "Education"
+    url: /education/
+
+  - title: "Projects"
+    url: /projects/
+
+  - title: "Test Score"
+    url: /test-score/
+
+  - title: "Achievements"
+    url: /achievements/
+
   - title: "CV"
     url: /cv/
     
   # - title: "CV"
   #   url: /cv-json/
     
-  - title: "Guide"
-    url: /markdown/

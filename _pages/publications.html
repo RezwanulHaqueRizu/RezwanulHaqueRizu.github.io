@@ -5,32 +5,39 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
-
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
+{% if site.author.googlescholar %}
+<p>Full list on <a href="{{site.author.googlescholar}}">Google Scholar</a>.</p>
 {% endif %}
+
+<ol reversed>
+{% assign mypubs = site.publications | sort: 'date' %}
+{% for post in mypubs reversed %}
+  {% capture haque_match %}{{ post.authors }} {{ post.citation }}{% endcapture %}
+  {% unless haque_match contains 'Haque' %}
+    {% continue %}
+  {% endunless %}
+  <li>
+    {% if post.title %}<strong>{{ post.title }}</strong>.{% endif %}
+    {% if post.authors %} {{ post.authors | replace: 'R. Haque', '<strong>R. Haque</strong>' }}.{% endif %}
+    {% if post.venue %} <i>{{ post.venue }}</i>.{% endif %}
+    {% if post.date %} {{ post.date | date: '%Y' }}.{% endif %}
+    {% if post.paperurl %} <a href="{{ post.paperurl }}">PDF</a>.{% else %} <span class="notice--info">Accepted — will be available online in Springer Book Chapter</span>{% endif %}
+    {% if post.citation %}<br/><span class="citation">{{ post.citation | replace: 'R. Haque', '<strong>R. Haque</strong>' }}</span>{% endif %}
+  </li>
+{% endfor %}
+</ol>
+
+<h3>Ongoing Research</h3>
+<ul>
+  <li><strong>Mosquito Larvae Detection Using Deep Learning for Disease Control in Bangladesh</strong> — custom YOLOv8 with CBAM and hyperparameter optimization (in progress).</li>
+</ul>
+
+<h3>Undergraduate Thesis</h3>
+<ul>
+  <li><strong>An Explainable Framework for Analyzing Black‑Box Machine Learning Models in Cardiovascular Disease Prediction</strong> — interpretable analyses to explain model decisions.</li>
+</ul>
 
 
 

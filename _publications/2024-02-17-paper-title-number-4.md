@@ -1,13 +1,14 @@
 ---
-title: "Paper Title Number 4"
+title: "Evaluating the Efficacy of Feature Selection Methods in Cardiovascular Disease Prediction with Machine Learning"
 collection: publications
 category: conferences
-permalink: /publication/2024-02-17-paper-title-number-4
-excerpt: 'This paper is about fixing template issue #693.'
-date: 2024-02-17
-venue: 'GitHub Journal of Bugs'
-paperurl: 'https://academicpages.github.io/files/paper3.pdf'
-citation: 'Your Name, You. (2024). &quot;Paper Title Number 3.&quot; <i>GitHub Journal of Bugs</i>. 1(3).'
+permalink: /publication/cvd-feature-selection-ml
+excerpt: 'A comparative study of feature selection strategies for ML-based cardiovascular disease prediction.'
+date: 2023-12-01
+venue: '6th International Conference on Electrical Information and Communication Technology (EICT 2023), Bangladesh'
+paperurl: '/files/paper2.pdf'
+citation: 'R. Haque, et al. (2023). "Evaluating the Efficacy of Feature Selection Methods in Cardiovascular Disease Prediction with Machine Learning." In Proceedings of EICT 2023.'
+authors: 'R. Haque, et al.'
 ---
 
-The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
+We compare embedded, wrapper, and filter-based feature selection methods for CVD prediction using classical and ensemble learners, reporting performance, stability, and interpretability.
