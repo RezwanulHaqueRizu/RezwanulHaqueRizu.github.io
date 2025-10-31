@@ -5,28 +5,173 @@ permalink: /publications/
 author_profile: true
 ---
 
+<style>
+.pub-item {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-left: 3px solid #e0e0e0;
+}
+.pub-item:hover {
+  border-left-color: #4CAF50;
+  background-color: #f9f9f9;
+}
+.pub-links {
+  margin-top: 0.5rem;
+}
+.pub-links a, .pub-links button {
+  display: inline-block;
+  margin-right: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.pub-links a:hover, .pub-links button:hover {
+  background: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+.collapsible-content {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 6px;
+}
+.collapsible-content.active {
+  display: block;
+}
+.collapsible-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.award-badge {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+</style>
+
+<script>
+function toggleContent(id) {
+  var content = document.getElementById(id);
+  content.classList.toggle('active');
+}
+</script>
+
 {% include base_path %}
 
 {% if site.author.googlescholar %}
 <p>Full list on <a href="{{site.author.googlescholar}}">Google Scholar</a>.</p>
 {% endif %}
 
-<ol reversed>
-{% assign mypubs = site.publications | sort: 'date' %}
-{% for post in mypubs reversed %}
-  {% capture haque_match %}{{ post.authors }} {{ post.citation }}{% endcapture %}
-  {% unless haque_match contains 'Haque' %}
-    {% continue %}
-  {% endunless %}
-  <li>
-    {% if post.title %}<strong>{{ post.title }}</strong>.{% endif %}
-    {% if post.authors %} {{ post.authors | replace: 'R. Haque', '<strong>R. Haque</strong>' }}.{% endif %}
-    {% if post.venue %} <i>{{ post.venue }}</i>.{% endif %}
-    {% if post.date %} {{ post.date | date: '%Y' }}.{% endif %}
-    {% if post.paperurl %} <a href="{{ post.paperurl }}">PDF</a>.{% else %} <span class="notice--info">Accepted — will be available online in Springer Book Chapter</span>{% endif %}
-    {% if post.citation %}<br/><span class="citation">{{ post.citation | replace: 'R. Haque', '<strong>R. Haque</strong>' }}</span>{% endif %}
-  </li>
-{% endfor %}
+<ol>
+  {% assign mypubs = site.publications | sort: 'date' %}
+  {% assign pub_counter = 0 %}
+  
+  {% comment %} First: ACB-TriNet with award {% endcomment %}
+  {% for post in mypubs %}
+    {% if post.title and post.title contains 'ACB-TriNet' %}
+      {% assign pub_counter = pub_counter | plus: 1 %}
+      <li class="pub-item">
+        <strong>{{ post.title }}</strong>
+        <span class="award-badge">🏆 Best Technical Paper</span>
+        <br/>
+        {{ post.authors | replace: 'R. Haque', '<strong>R. Haque</strong>' }}
+        <br/>
+        <em>{{ post.venue }}</em>, {{ post.date | date: '%Y' }}.
+        
+        <div class="pub-links">
+          {% if post.paperurl %}
+            <a href="{{ post.paperurl }}" target="_blank">📄 DOI</a>
+          {% else %}
+            <span style="color:#28a745;">✓ Accepted</span> — will be available online in Springer Book Chapter
+          {% endif %}
+          <button onclick="toggleContent('methodology-{{ pub_counter }}')">🔬 Methodology</button>
+          <button onclick="toggleContent('slides-{{ pub_counter }}')">📊 Slides</button>
+          {% if post.codeurl and post.codeurl != '' %}
+            <a href="{{ post.codeurl }}" target="_blank">💻 Code</a>
+          {% else %}
+            <a href="#" style="pointer-events:none;opacity:0.5;" title="Code will be available soon">💻 Code</a>
+          {% endif %}
+        </div>
+        
+        <div id="methodology-{{ pub_counter }}" class="collapsible-content">
+          <h4>Methodology</h4>
+          <img src="{{ base_path }}/files/acb_net_paper_model.png" alt="ACB-TriNet Methodology">
+        </div>
+        
+        <div id="slides-{{ pub_counter }}" class="collapsible-content">
+          <h4>Presentation Slides</h4>
+          <a href="{{ base_path }}/files/ICETCS-ID-12_ACBNet Paper Presentation Slides.pptx" download style="display:inline-block;padding:0.5rem 1rem;background:#4CAF50;color:white;border-radius:4px;text-decoration:none;">📥 Download Slides (PPTX)</a>
+        </div>
+      </li>
+    {% endif %}
+  {% endfor %}
+
+  {% comment %} Remaining publications {% endcomment %}
+  {% for post in mypubs %}
+    {% if post.title and post.title contains 'ACB-TriNet' %}
+      {% continue %}
+    {% endif %}
+    {% capture haque_match %}{{ post.authors }} {{ post.citation }}{% endcapture %}
+    {% unless haque_match contains 'Haque' %}
+      {% continue %}
+    {% endunless %}
+    {% assign pub_counter = pub_counter | plus: 1 %}
+    
+    <li class="pub-item">
+      <strong>{{ post.title }}</strong>
+      <br/>
+      {{ post.authors | replace: 'R. Haque', '<strong>R. Haque</strong>' }}
+      <br/>
+      <em>{{ post.venue }}</em>, {{ post.date | date: '%Y' }}.
+      
+      <div class="pub-links">
+        {% if post.paperurl %}
+          <a href="{{ post.paperurl }}" target="_blank">📄 DOI</a>
+        {% elsif post.status == 'Submitted' %}
+          <span style="color:#ff9800;">⏳ Submitted</span>
+        {% else %}
+          <span style="color:#28a745;">✓ Accepted</span> — will be available online in Springer Book Chapter
+        {% endif %}
+        
+        {% if post.title contains 'Cardiovascular Disease' %}
+          <button onclick="toggleContent('methodology-{{ pub_counter }}')">🔬 Methodology</button>
+          <button onclick="toggleContent('slides-{{ pub_counter }}')">📊 Slides</button>
+        {% endif %}
+        
+        {% if post.codeurl and post.codeurl != '' %}
+          <a href="{{ post.codeurl }}" target="_blank">💻 Code</a>
+        {% else %}
+          <a href="#" style="pointer-events:none;opacity:0.5;" title="Code will be available soon">💻 Code</a>
+        {% endif %}
+      </div>
+      
+      {% if post.title contains 'Cardiovascular Disease' %}
+        <div id="methodology-{{ pub_counter }}" class="collapsible-content">
+          <h4>Methodology</h4>
+          <img src="{{ base_path }}/files/Evaluating the Efficacy of Feature Selection Methods in Cardiovascular Disease Prediction with Machine Learning model.jpeg" alt="CVD Prediction Methodology">
+        </div>
+        
+        <div id="slides-{{ pub_counter }}" class="collapsible-content">
+          <h4>Presentation Slides</h4>
+          <a href="{{ base_path }}/files/Presentation Slide Evaluating the Efficacy of Feature Selection Methods in Cardiovascular Disease Prediction with Machine Learning.pdf" target="_blank" style="display:inline-block;padding:0.5rem 1rem;background:#4CAF50;color:white;border-radius:4px;text-decoration:none;">📥 Download Slides (PDF)</a>
+        </div>
+      {% endif %}
+    </li>
+  {% endfor %}
 </ol>
 
 <h3>Ongoing Research</h3>
