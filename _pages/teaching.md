@@ -8,6 +8,7 @@ author_profile: true
 {% include base_path %}
 
 ### Uttara University — Department of Computer Science & Engineering
+
 **Lecturer** (Nov. 2023 – Present)
 
 - Teach core Computer Science subjects and mentor students
@@ -21,7 +22,7 @@ author_profile: true
 
 - Guide student initiatives promoting mental health and well‑being
 
-#### Courses Taught
+### Courses Taught
 
 - Microprocessor Interfacing and Low‑Level Language (theory & sessional)
 - Programming Language and Application II (theory & sessional)
@@ -29,5 +30,4 @@ author_profile: true
 - Computer Architecture
 - Data Structure and Algorithms (theory & lab)
 - Microprocessor Assembly Programming (theory & lab)
-
-
+- Data Communication
