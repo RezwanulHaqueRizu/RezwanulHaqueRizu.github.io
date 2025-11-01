@@ -12,7 +12,7 @@ site_theme               : "default" # Currently available options are "default"
 title                    : "Rezwanul Haque"
 title_separator          : "-"
 name                     : &name "Rezwanul Haque"
-description              : &description "PhD Candidate in Computer Science. Research in Computer Security, Computer Vision, and NLP."   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "Prospective PhD Student in Computer Science. Research in Computer Security, Computer Vision, and NLP."   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : https://RezwanulHaqueRizu.github.io # User/Org site or project site root
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # project site path under the user domain (empty for user sites)
@@ -26,7 +26,7 @@ author:
   avatar           : "ridu.jpeg"
   name             : "Rezwanul Haque"
   pronouns         : # example: "she/her"  
-  bio              : "PhD Candidate | Lecturer, Dept. of CSE"
+  bio              : "Prospective PhD Student | Lecturer, Dept. of CSE"
   location         : "Dhaka, Bangladesh"
   employer         : "Uttara University"
   uri              : # URL
@@ -38,7 +38,7 @@ author:
   googlescholar    : "https://scholar.google.com/citations?user=EECNkGwAAAAJ&hl=en"
   inspire-hep      : # URL
   impactstory      : # URL
-  orcid            : "https://orcid.org/yourorcidurl"
+  orcid            : "https://orcid.org/my-orcid?orcid=0009-0009-9977-4228"
   semantic         : # URL
   pubmed           : 
   researchgate     : # URL
