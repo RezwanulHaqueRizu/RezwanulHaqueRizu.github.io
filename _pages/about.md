@@ -19,4 +19,4 @@ I am seeking a PhD position to advance trustworthy and privacy‑preserving mach
 - Medical imaging and robust computer vision systems
 - Applied NLP for healthcare and public sector data
 
-If you're a faculty member or researcher working in these areas, I'd be excited to connect and explore potential PhD opportunities.~
+If you're a faculty member or researcher working in these areas, I'd be excited to connect and explore potential PhD opportunities.
